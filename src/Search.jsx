@@ -9,11 +9,10 @@ const Search = ({ onSearch }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="search-field">Search for a cake:</label>
+        <form onSubmit={handleSubmit} className="search-form">
             <input 
                 type="text" 
-                id="search-field"
+                placeholder="Search for a cake"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
             />

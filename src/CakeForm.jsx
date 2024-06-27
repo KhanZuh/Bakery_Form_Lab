@@ -13,35 +13,30 @@ const CakeForm = ({ onNewCake }) => {
             rating: parseInt(rating)
         };
         onNewCake(newCake);
-        // Reset form
         setName("");
         setIngredients("");
         setRating(1);
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Cake Name:</label>
+        <form onSubmit={handleSubmit} className="add-recipe-form">
+            <h2>Add New Recipe</h2>
             <input 
                 type="text" 
-                id="name" 
+                placeholder="Cake Name"
                 value={name} 
                 onChange={(e) => setName(e.target.value)} 
                 required
             />
-            <label htmlFor="ingredients">Ingredients:</label>
             <textarea 
-                cols="30" 
-                rows="1" 
-                id="ingredients" 
+                placeholder="Ingredients (comma separated)"
                 value={ingredients} 
                 onChange={(e) => setIngredients(e.target.value)}
                 required
             ></textarea>
-            <label htmlFor="rating">Rating:</label>
             <input 
                 type="number" 
-                id="rating" 
+                placeholder="Rating (1-5)"
                 min={1} 
                 max={5} 
                 value={rating} 

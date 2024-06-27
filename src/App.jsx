@@ -72,19 +72,19 @@ const handleSearch = (searchTerm) => {
 
 
 
-  return (
-    <>
-      <header>
-        <NavBar />
-        <Title />
-      </header>
-      <main>
-        <Search onSearch={handleSearch} />
-        <RecipeList cakes={filteredCakes} />
-        <CakeForm onNewCake={handleNewCake} />
-      </main>
-    </>
-  );
+return (
+  <div className="App">
+    <header>
+      <Title />
+      <NavBar />
+    </header>
+    <main>
+      <Search onSearch={handleSearch} />
+      <RecipeList cakes={filteredCakes} />
+      <CakeForm onNewCake={handleNewCake} />
+    </main>
+  </div>
+);
 }
 
 export default App;
