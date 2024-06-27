@@ -4,6 +4,8 @@ import Title from "./Title";
 import RecipeList from "./RecipeList";
 import Search from "./Search";
 import CakeForm from "./CakeForm";
+import './App.css';
+
 
 function App() {
   const [cakes, setCakes] = useState([
@@ -53,20 +55,20 @@ function App() {
 
 
 
-  // Function to handle search functionality
-  const handleSearch = (searchTerm) => {
-    // Filter cakes based on the search term
+const handleSearch = (searchTerm) => {
+  if (searchTerm.trim() === '') {
+    // If search term is empty, show all cakes
+    setFilteredCakes(cakes);
+  } else {
     const filtered = cakes.filter(cake => 
-      // Check if the cake name includes the search term (case-insensitive)
       cake.cakeName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      // Check if any ingredient includes the search term (case-insensitive)
       cake.ingredients.some(ingredient => 
         ingredient.toLowerCase().includes(searchTerm.toLowerCase())
       )
     );
-    // Update the filtered cakes state with the search results
     setFilteredCakes(filtered);
-  };
+  }
+};
 
 
 
@@ -77,11 +79,8 @@ function App() {
         <Title />
       </header>
       <main>
-        {/* Pass the search handler to the Search component */}
         <Search onSearch={handleSearch} />
-        {/* Pass the filtered cakes to the RecipeList component */}
         <RecipeList cakes={filteredCakes} />
-        {/* Pass the new cake handler to the CakeForm component */}
         <CakeForm onNewCake={handleNewCake} />
       </main>
     </>
